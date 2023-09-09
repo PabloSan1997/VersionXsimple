@@ -1,10 +1,10 @@
 import express from 'express';
+import { UserController } from '../controllers/userControllers';
 
 const router = express();
+const controller = new UserController();
 
-router.get('/', (req, res)=>{
-    res.json({message:'Sou users'});
-});
-
-
+router.post('/addUser', controller.addUser);
+router.post('/login', controller.loginUser);
+router.post('/loginToken', controller.loginToken);
 export default router;
