@@ -1,10 +1,12 @@
 import jwt from 'jsonwebtoken';
 import { variables } from '../config/variables';
 import {UserId} from '../main';
+import { Users } from '../database/models/users';
+import { AppDataSource } from '../database/config';
 
 type JSONTOKEN = {
     generar:(usuario:UserId)=>Promise<{token:string}>
-    verificar:(token:string)=>Promise<UserId>;
+    verificar:(token:string)=>Promise<Users>;
 }
 
 export const tokenJwt:JSONTOKEN = {
@@ -20,6 +22,18 @@ export const tokenJwt:JSONTOKEN = {
             throw 'Problemas al iniciar secion'
         }
         const user = jwt.verify(token, variables.KEY_JWT) as UserId;
-        return user;
+        const repositorio = AppDataSource.getRepository(Users);
+        const usuario = await repositorio.findOne({
+            where:{
+                id_user:user.id_user,
+                name:user.name,
+                email:user.email,
+                password:user.password
+            }
+        });
+        if(!usuario){
+            throw 'Error'
+        }
+        return usuario;
     }
 }
