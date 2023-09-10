@@ -19,7 +19,9 @@ export interface UserId extends UserAdd {
 export interface PublicAdd {
     message:string;
 }
-
+export interface EditPublic extends PublicAdd{
+    id_pueblic:string;
+}
 export interface PublicFull extends PublicAdd{
     id_pueblic:string;
     fecha:Date;

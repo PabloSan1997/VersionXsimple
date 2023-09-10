@@ -11,5 +11,5 @@ const router = express();
 router.get('/', controller.readPublics);
 router.post('/', tokenHandle,controller.addPublics);
 router.delete('/:id_pueblic',tokenHandle, controller.deletePublic);
-
+router.patch('/', controller.editPublic);
 export default router;
