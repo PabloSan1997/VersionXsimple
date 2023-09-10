@@ -5,10 +5,10 @@ const  message = Joi.string().min(1).min(1).max(280).required();
 
 
 export const addMEssageSchema = Joi.object({
-    message
+	message
 });
 
 export const editMessageSchema = Joi.object({
-    id_pueblic,
-    message
+	id_pueblic,
+	message
 });

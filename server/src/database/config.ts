@@ -4,12 +4,12 @@ import { Users } from './models/users';
 import { Publicaciones } from './models/publicaciones';
 
 export const AppDataSource = new DataSource({
-    type:'postgres',
-    url: variables.DB_URL,
-    synchronize:true,
-    logging:true,
-    ssl:{
-        rejectUnauthorized:false
-    },
-    entities:[Publicaciones, Users]
+	type:'postgres',
+	url: variables.DB_URL,
+	synchronize:true,
+	logging:true,
+	ssl:{
+		rejectUnauthorized:false
+	},
+	entities:[Publicaciones, Users]
 });

@@ -10,30 +10,30 @@ type JSONTOKEN = {
 }
 
 export const tokenJwt:JSONTOKEN = {
-    generar:async (usuario:UserId)=>{
-        if(!variables.KEY_JWT){
-            throw 'Problemas al iniciar secion'
-        }
-        const token = jwt.sign(usuario, variables.KEY_JWT);
-        return {token}
-    },
-    verificar:async (token:string)=>{
-        if(!variables.KEY_JWT){
-            throw 'Problemas al iniciar secion'
-        }
-        const user = jwt.verify(token, variables.KEY_JWT) as UserId;
-        const repositorio = AppDataSource.getRepository(Users);
-        const usuario = await repositorio.findOne({
-            where:{
-                id_user:user.id_user,
-                name:user.name,
-                email:user.email,
-                password:user.password
-            }
-        });
-        if(!usuario){
-            throw 'Error'
-        }
-        return usuario;
-    }
-}
+	generar:async (usuario:UserId)=>{
+		if(!variables.KEY_JWT){
+			throw 'Problemas al iniciar secion';
+		}
+		const token = jwt.sign(usuario, variables.KEY_JWT);
+		return {token};
+	},
+	verificar:async (token:string)=>{
+		if(!variables.KEY_JWT){
+			throw 'Problemas al iniciar secion';
+		}
+		const user = jwt.verify(token, variables.KEY_JWT) as UserId;
+		const repositorio = AppDataSource.getRepository(Users);
+		const usuario = await repositorio.findOne({
+			where:{
+				id_user:user.id_user,
+				name:user.name,
+				email:user.email,
+				password:user.password
+			}
+		});
+		if(!usuario){
+			throw 'Error';
+		}
+		return usuario;
+	}
+};

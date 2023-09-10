@@ -7,16 +7,16 @@ const password = Joi.string().min(1).required();
 const token = Joi.string().min(5).required();
 
 export const addUserSchema = Joi.object({
-    email,
-    name,
-    password
+	email,
+	name,
+	password
 });
 
 export const loginUserSchema = Joi.object({
-    email,
-    password
+	email,
+	password
 });
 
 export const logginTokenSchema = Joi.object({
-    token
+	token
 });
