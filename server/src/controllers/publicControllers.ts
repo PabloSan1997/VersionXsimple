@@ -32,6 +32,30 @@ export class PublicController {
             next(Boom.badImplementation(message));
         }
     }
+
+    async readOnePublic(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { id_pueblic } = req.params as { id_pueblic: string };
+            const repositorio = AppDataSource.getRepository(Publicaciones);
+            const publicacion = await repositorio.findOne({
+                where: {
+                    id_pueblic
+                },
+                relations: {
+                    users: true
+                }
+            });
+            if (!publicacion) {
+                throw 'No se encontró publicación';
+            }
+            res.json(publicacion);
+        } catch (error) {
+            const message = error as string;
+            next(Boom.notFound(message));
+        }
+
+    }
+
     async addPublics(req: Request, res: Response, next: NextFunction) {
         try {
             const { token } = req.headers as { token: string };
@@ -52,22 +76,22 @@ export class PublicController {
         try {
             const messageEdit = req.body as EditPublic;
             const repositorio = AppDataSource.getRepository(Publicaciones);
-            const {token} = req.headers as { token: string };
+            const { token } = req.headers as { token: string };
             const usuario = await tokenJwt.verificar(token);
             const message = await repositorio.findOne({
-                where:{
-                    id_pueblic:messageEdit.id_pueblic
+                where: {
+                    id_pueblic: messageEdit.id_pueblic
                 },
-                relations:{
-                    users:true
+                relations: {
+                    users: true
                 }
             });
 
-            if(!message || usuario.id_user!==message.users.id_user){
+            if (!message || usuario.id_user !== message.users.id_user) {
                 throw 'No tienes permiso para esta accion'
             }
-            await repositorio.update({id_pueblic:message.id_pueblic}, {message:messageEdit.message});
-            res.json({message:"Se edito elemento con exito"});
+            await repositorio.update({ id_pueblic: message.id_pueblic }, { message: messageEdit.message });
+            res.json({ message: "Se edito elemento con exito" });
         } catch (error) {
             const message = error as string;
             next(Boom.badRequest(message));

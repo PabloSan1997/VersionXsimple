@@ -10,7 +10,7 @@ import { boomHandle } from "./middlewares/boomHandle";
 async function main() {
     try {
     await AppDataSource.initialize();
-    console.log('Conectado a la base de datos')
+    console.log('Conectado a la base de datos');
     const app = express();
 
     app.use(cors());
