@@ -1,6 +1,6 @@
 import React from 'react';
-import { loginUser } from './api/loginUser';
-
+import { loginToken, loginUser } from './api/loginUser';
+import {useCookies} from 'react-cookie';
 
 const Contexto = React.createContext({});
 
@@ -9,7 +9,8 @@ export function ProvedorContexto({children}:Children){
     const [token, setToken] = React.useState<string>('');
     const [inicio, setInicio] = React.useState<UserReq>({email:'', password:''});
     const [actualizarInicio, setActualizarInicio] = React.useState(false);
-    console.log(token);
+    const [tokenCookie, setTokenCookie] = useCookies(['tokenCookie']);
+    
     const iniciarSeccion = (entrada:UserReq):void => {
         setInicio(entrada);
         setActualizarInicio(!actualizarInicio);
@@ -20,6 +21,7 @@ export function ProvedorContexto({children}:Children){
         .then(data=>{
             setPermiso(data.permiso);
             setToken(data.token);
+            setTokenCookie('tokenCookie', data.token, {maxAge:20000});
         })
         .catch(error=>{
             const miError = error as ErrorBoom;
@@ -29,6 +31,18 @@ export function ProvedorContexto({children}:Children){
             console.error(miError);
         });
     },[actualizarInicio, inicio]);
+
+    React.useEffect(()=>{
+        loginToken(tokenCookie.tokenCookie?tokenCookie.tokenCookie:'')
+        .then(data=>{
+            setPermiso(data.permiso);
+            setToken(data.token);
+        })
+        .catch(error=>{
+            console.error(error);
+        });
+    },[token]);
+
 
     return(
         <Contexto.Provider value={{

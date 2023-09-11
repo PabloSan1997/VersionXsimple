@@ -18,3 +18,21 @@ export async function loginUser(user:UserReq):Promise<ResponseLogin>{
     }
     return data;
 }
+
+export async function  loginToken(token:string):Promise<ResponseLogin> {
+    const solicitud = {
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            entrada:'entrada123'
+        },
+        body:JSON.stringify({token})
+    };
+    const generar = await fetch(`${base}/users/loginToken`, solicitud);
+    const data = await generar.json();
+    if(!generar.ok){
+        const error = data as ErrorBoom;
+        throw error;
+    }
+    return data;
+}
