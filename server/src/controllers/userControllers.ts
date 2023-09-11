@@ -81,7 +81,7 @@ export class UserController {
 		try {
 			const { token } = req.body as { token: string };
 			await tokenJwt.verificar(token);
-			res.json({ token, permisio: true });
+			res.json({ token, permiso: true });
 		} catch (error) {
 			const message = error as string | Error | undefined;
 			next(Boom.badRequest(message));
