@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import { Message } from './pages/Message';
 import { Login } from './pages/Login';
 import { Perfil } from './pages/Perfil';
+import { Header } from './components/Header';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <HashRouter>
+      <Header/>
       <Rutas/>
     </HashRouter>
   );

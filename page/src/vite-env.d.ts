@@ -9,7 +9,10 @@ type Children = {
 type Contexto = {
     permiso: boolean,
     token:string,
-    iniciarSeccion:(a:UserReq)=>void
+    iniciarSeccion:(a:UserReq)=>void,
+    cerrarSeccion:()=>void,
+    name:string,
+    publicaciones:FullPublic[]
 }
 
 
@@ -21,7 +24,8 @@ interface UserReq {
 }
 interface ResponseLogin {
     token: string,
-    permiso: boolean
+    permiso: boolean,
+    name:string
 }
 
 
@@ -29,4 +33,29 @@ type ErrorBoom = {
     statusCode: number,
     error: string,
     message: string
+}
+
+interface FullPublic extends PublicSimple {
+    users: {
+      id_user: string,
+      name: string
+    }
+}
+
+interface PublicSimple {
+    id_pueblic: string,
+    message: string,
+    fecha: string,
+    fecha_actual: string,
+}
+
+interface OneUser{
+    id_user: string,
+  email: string,
+  name: string,
+  publicaciones:PublicSimple[]
+}
+
+interface Message {
+    message:string
 }
