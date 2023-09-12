@@ -10,10 +10,10 @@ export class Publicaciones{
     @Column()
     	message:string;
 
-    @CreateDateColumn()
+    @CreateDateColumn({type:'timestamp'})
     	fecha:Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({type:'timestamp'})
     	fecha_actual:Date;
 
     

@@ -48,7 +48,15 @@ export class PublicController {
 			if (!publicacion) {
 				throw 'No se encontró publicación';
 			}
-			res.json(publicacion);
+			const mostrarUsuario = {
+				id_user:publicacion.users.id_user,
+				name:publicacion.users.name
+			};
+			const mostrar = {
+				...publicacion,
+				users:mostrarUsuario
+			};
+			res.json(mostrar);
 		} catch (error) {
 			const message = error as string;
 			next(Boom.notFound(message));

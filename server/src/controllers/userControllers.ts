@@ -71,7 +71,7 @@ export class UserController {
 			};
 			const token = await tokenJwt.generar(clonar);
 			await repositorio.update({ id_user: user.id_user }, user);
-			res.json({ ...token, permiso: true });
+			res.json({ ...token, permiso: true, name:user.name });
 		} catch (error) {
 			const message = error as string | Error | undefined;
 			next(Boom.badRequest(message));
@@ -80,8 +80,8 @@ export class UserController {
 	async loginToken(req: Request, res: Response, next: NextFunction) {
 		try {
 			const { token } = req.body as { token: string };
-			await tokenJwt.verificar(token);
-			res.json({ token, permiso: true });
+			const user =  await tokenJwt.verificar(token);
+			res.json({ token, permiso: true, name:user.name });
 		} catch (error) {
 			const message = error as string | Error | undefined;
 			next(Boom.badRequest(message));
