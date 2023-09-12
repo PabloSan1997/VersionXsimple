@@ -12,7 +12,8 @@ type Contexto = {
     iniciarSeccion:(a:UserReq)=>void,
     cerrarSeccion:()=>void,
     name:string,
-    publicaciones:FullPublic[]
+    publicaciones:FullPublic[],
+    userId:string
 }
 
 
@@ -25,7 +26,8 @@ interface UserReq {
 interface ResponseLogin {
     token: string,
     permiso: boolean,
-    name:string
+    name:string,
+    id_user:string
 }
 
 
@@ -48,7 +50,9 @@ interface PublicSimple {
     fecha: string,
     fecha_actual: string,
 }
-
+interface PublicUserCaja extends PublicSimple{
+    id_users
+}
 interface OneUser{
     id_user: string,
   email: string,

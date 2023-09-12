@@ -7,17 +7,17 @@ import { PublicUser } from '../components/PublicUser';
 
 export function Perfil() {
   const parametro = useParams();
-  const { permiso } = UseContexto();
+  const { permiso} = UseContexto();
   const [userInfo, setUserInfo] = React.useState<{name:string, email:string}>({name:'', email:''});
   const [allPublics, setAllPublics] = React.useState<PublicSimple[]>([]);
-  console.log(userInfo, allPublics);
+  const [usuarioId, setUsuarioId] = React.useState('');
   React.useEffect(() => {
     getOnePublic(parametro.id_user as string)
       .then(data => {
-        const {name, email} = data;
+        const {name, email, id_user} = data;
         setUserInfo({name, email});
         setAllPublics(data.publicaciones);
-        console.log(data);
+        setUsuarioId(id_user);
       })
       .catch(error => {
         console.error(error);
@@ -32,7 +32,7 @@ export function Perfil() {
         </div>
         <div className="publicaciones_personales">
           {allPublics.map(elemento=>{
-            return(<PublicUser key={elemento.id_pueblic} {...elemento}/>);
+            return(<PublicUser key={elemento.id_pueblic} {...elemento} id_users={usuarioId}/>);
           })}
         </div>
       </>

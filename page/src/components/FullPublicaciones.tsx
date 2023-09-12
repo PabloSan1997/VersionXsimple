@@ -1,4 +1,4 @@
-
+import {Bars2Icon} from '@heroicons/react/24/solid';
 import { UseContexto } from '../Context';
 import { cambiarFecha } from '../utilities/cambiarFecha';
 import {useNavigate} from 'react-router-dom';
@@ -22,11 +22,14 @@ function FullPublic(props:FullPublic){
     const {users, message, fecha_actual} = props;
     const mostra = cambiarFecha(fecha_actual);
     const navegar = useNavigate();
+    const {userId} = UseContexto();
+
     const ir =()=>{
         navegar(`${rutas.perfil}/${users.id_user}`);
     }
     return(
         <div className="public">
+            {userId===users.id_user?<Bars2Icon/>:null}
             <span className='main_name' onClick={ir}>{users.name}</span>
             <p className="texto">{message}</p>
             <span className="fecha">{mostra.fecha}</span>

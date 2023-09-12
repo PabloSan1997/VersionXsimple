@@ -13,6 +13,7 @@ export function ProvedorContexto({ children }: Children) {
     const [tokenCookie, setTokenCookie, removeTokenCookie] = useCookies(['tokenCookie']);
     const [name, setName] = React.useState('');
     const [publicaciones, setPublicaciones] = React.useState<FullPublic[]>([]);
+    const [userId, setUserId] = React.useState('');
 
     const iniciarSeccion = (entrada: UserReq): void => {
         setInicio(entrada);
@@ -32,6 +33,7 @@ export function ProvedorContexto({ children }: Children) {
                 setToken(data.token);
                 setTokenCookie('tokenCookie', data.token, { maxAge: 20000 });
                 setName(data.name);
+                setUserId(data.id_user);
             })
             .catch(error => {
                 const miError = error as ErrorBoom;
@@ -48,6 +50,7 @@ export function ProvedorContexto({ children }: Children) {
                 setPermiso(data.permiso);
                 setToken(data.token);
                 setName(data.name);
+                setUserId(data.id_user);
             })
             .catch(error => {
                 console.error(error);
@@ -74,7 +77,8 @@ export function ProvedorContexto({ children }: Children) {
             iniciarSeccion,
             cerrarSeccion,
             name,
-            publicaciones
+            publicaciones,
+            userId
         }}>
             {children}
         </Contexto.Provider>
