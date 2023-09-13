@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { loginToken, loginUser } from './api/loginUser';
 import { useCookies } from 'react-cookie';
@@ -14,6 +15,9 @@ export function ProvedorContexto({ children }: Children) {
     const [name, setName] = React.useState('');
     const [publicaciones, setPublicaciones] = React.useState<FullPublic[]>([]);
     const [userId, setUserId] = React.useState('');
+    const [messageId, setMessageId] = React.useState('');
+    const [mostrarEditar, setMostrarEditar] = React.useState(false);
+    const [mEdit, setMEdit] = React.useState('');
 
     const iniciarSeccion = (entrada: UserReq): void => {
         setInicio(entrada);
@@ -78,7 +82,13 @@ export function ProvedorContexto({ children }: Children) {
             cerrarSeccion,
             name,
             publicaciones,
-            userId
+            userId,
+            messageId, 
+            setMessageId,
+            mostrarEditar, 
+            setMostrarEditar,
+            mEdit, 
+            setMEdit
         }}>
             {children}
         </Contexto.Provider>

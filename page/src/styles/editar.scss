@@ -1,0 +1,37 @@
+.menu_formulario{
+    border: 2px solid black;
+    width: 50%;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: fit-content;
+    margin:10% auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    label{
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    .message_area{
+        font-size: 1.2rem;
+        padding: 5px;
+        outline: none;
+        resize: none;
+        height: 100px;
+    }
+    .area_botones{
+        display: flex;
+        .boton{
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            &.cancelar{
+                margin-left: 2%;
+            }
+        }
+    }
+}

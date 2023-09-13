@@ -13,7 +13,13 @@ type Contexto = {
     cerrarSeccion:()=>void,
     name:string,
     publicaciones:FullPublic[],
-    userId:string
+    userId:string,
+    messageId:string, 
+    setMessageId:(a:string)=>void,
+    mostrarEditar:boolean, 
+    setMostrarEditar:(a:boolean)=>void,
+    setMEdit:(a:string)=>void,
+    mEdit
 }
 
 
@@ -62,4 +68,10 @@ interface OneUser{
 
 interface Message {
     message:string
+}
+
+interface Menu_Propiedades{
+    classe:string,
+    id_pueblic: string,
+    message:string, 
 }

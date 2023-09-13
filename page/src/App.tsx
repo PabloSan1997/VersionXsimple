@@ -4,6 +4,8 @@ import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Perfil } from './pages/Perfil';
 import { Header } from './components/Header';
+import { UseContexto } from './Context';
+import { Editar } from './components/Editar';
 
 function App() {
 
@@ -30,10 +32,13 @@ function App() {
     }
   ]);
 
+  const {mostrarEditar} = UseContexto();
+
   return (
     <HashRouter>
       <Header/>
       <Rutas/>
+      {mostrarEditar?<Editar/>:null}
     </HashRouter>
   );
 }
