@@ -1,6 +1,7 @@
 import React from "react";
 import { addPublic } from "../api/addPublic";
 import { UseContexto } from "../Context";
+import '../styles/agregar_public.scss';
 
 export function AgregarPublicacion(){
     const [message, setEntrada] = React.useState('');
@@ -18,8 +19,7 @@ export function AgregarPublicacion(){
     }
     return(
         <form className="add_public" onSubmit={subir}>
-            <label htmlFor="public_entrada">Publicacion</label>
-            <textarea  id="public_entrada" value={message} onChange={e => setEntrada(e.target.value)}></textarea>
+            <textarea  id="public_entrada" value={message} onChange={e => setEntrada(e.target.value)} placeholder="Publicación nueva"></textarea>
             <button className="boton" type='submit'>Agregar</button>
         </form>
     );

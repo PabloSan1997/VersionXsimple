@@ -4,6 +4,8 @@ import { UseContexto } from '../Context';
 import React from 'react';
 import { getOnePublic } from '../api/getPublics';
 import { PublicUser } from '../components/PublicUser';
+import '../styles/publicaciones.scss';
+import '../styles/perfil.scss';
 
 export function Perfil() {
   const parametro = useParams();
@@ -28,9 +30,10 @@ export function Perfil() {
     return (
       <>
         <div className="perfil">
-          <span>{userInfo.name}</span>
+          <span className='nombre_usuario'>{userInfo.name}</span>
+          <span className='email_usuario'>{userInfo.email}</span>
         </div>
-        <div className="publicaciones_personales">
+        <div className="contenedor_full">
           {allPublics.map(elemento=>{
             return(<PublicUser key={elemento.id_pueblic} {...elemento} id_users={usuarioId}/>);
           })}

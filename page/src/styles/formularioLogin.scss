@@ -1,0 +1,35 @@
+.login_titulo{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+.formulario_login{
+    width: 500px;
+    margin:50px auto;
+    border: 2px solid gray;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .area_entrada{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        label{
+            font-size: 1.3rem;
+            margin-bottom: 2%;
+        }
+        input{
+            padding: 5px;
+            outline: none;
+        }
+    }
+    .boton{
+        margin:20px 0 0 0; 
+        padding: 5px 0;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}

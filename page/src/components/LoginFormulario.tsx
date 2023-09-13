@@ -28,7 +28,7 @@ export function LogginFormulario(): JSX.Element {
     }
 
     return (
-        <form className="formulario" onSubmit={evento}>
+        <form className="formulario_login" onSubmit={evento}>
             <div className="area_entrada">
                 <label htmlFor="entrada1">Email</label>
                 <input

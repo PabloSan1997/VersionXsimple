@@ -1,0 +1,12 @@
+.perfil{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    .nombre_usuario{
+        font-size: 5rem;
+    }
+    .email_usuario{
+        font-size: 1.5rem;
+    }
+}
