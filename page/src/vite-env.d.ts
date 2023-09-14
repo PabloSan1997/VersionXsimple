@@ -19,7 +19,9 @@ type Contexto = {
     mostrarEditar:boolean, 
     setMostrarEditar:(a:boolean)=>void,
     setMEdit:(a:string)=>void,
-    mEdit
+    mEdit:string,
+    loading:boolean, 
+    setLoading:(a:boolean)=>void
 }
 
 
@@ -74,4 +76,8 @@ interface Menu_Propiedades{
     classe:string,
     id_pueblic: string,
     message:string, 
+}
+interface EditPublic{
+    id_pueblic: string,
+    message: string
 }

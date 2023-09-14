@@ -18,6 +18,7 @@ export function ProvedorContexto({ children }: Children) {
     const [messageId, setMessageId] = React.useState('');
     const [mostrarEditar, setMostrarEditar] = React.useState(false);
     const [mEdit, setMEdit] = React.useState('');
+    const [loading, setLoading] = React.useState(true);
 
     const iniciarSeccion = (entrada: UserReq): void => {
         setInicio(entrada);
@@ -55,9 +56,11 @@ export function ProvedorContexto({ children }: Children) {
                 setToken(data.token);
                 setName(data.name);
                 setUserId(data.id_user);
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
+                setLoading(false);
             });
     }, [token]);
 
@@ -88,7 +91,9 @@ export function ProvedorContexto({ children }: Children) {
             mostrarEditar, 
             setMostrarEditar,
             mEdit, 
-            setMEdit
+            setMEdit,
+            loading, 
+            setLoading
         }}>
             {children}
         </Contexto.Provider>
