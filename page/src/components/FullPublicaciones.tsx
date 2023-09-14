@@ -36,7 +36,7 @@ function FullPublic(props: FullPublic) {
 
 
     return (
-        <div className="public">
+        <div className="public" onClick={()=>mostrarMenu?setMostrarMenu(false):null}>
             <div className="area_cabeza">
                 <span className='main_name' onClick={ir}>{users.name}</span>
                 {userId === users.id_user ?
