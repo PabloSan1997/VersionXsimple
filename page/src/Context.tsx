@@ -64,6 +64,7 @@ export function ProvedorContexto({ children }: Children) {
             });
     }, [token]);
 
+
     React.useEffect(() => {
         if (permiso) {
             getPublics()
@@ -86,13 +87,13 @@ export function ProvedorContexto({ children }: Children) {
             name,
             publicaciones,
             userId,
-            messageId, 
+            messageId,
             setMessageId,
-            mostrarEditar, 
+            mostrarEditar,
             setMostrarEditar,
-            mEdit, 
+            mEdit,
             setMEdit,
-            loading, 
+            loading,
             setLoading
         }}>
             {children}

@@ -59,7 +59,8 @@ interface PublicSimple {
     fecha_actual: string,
 }
 interface PublicUserCaja extends PublicSimple{
-    id_users
+    id_users,
+    name:string
 }
 interface OneUser{
     id_user: string,

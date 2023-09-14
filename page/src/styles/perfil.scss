@@ -1,12 +1,32 @@
-.perfil{
-    width: 90%;
-    margin: auto;
+@import './caligrafia.scss';
+
+.perfil {
+    width: 95%;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
-    .nombre_usuario{
+
+    .nombre_usuario {
         font-size: 5rem;
+        margin: auto;
+        font-family: $nunito;
+        font-weight: 800;
     }
-    .email_usuario{
+
+    .email_usuario {
         font-size: 1.5rem;
+    }
+}
+
+.dark-mode {
+    .perfil {
+
+        .nombre_usuario {
+            color: white;
+        }
+
+        .email_usuario {
+            color: white;
+        }
     }
 }

@@ -35,7 +35,7 @@ export function Perfil() {
         </div>
         <div className="contenedor_full">
           {allPublics.map(elemento=>{
-            return(<PublicUser key={elemento.id_pueblic} {...elemento} id_users={usuarioId}/>);
+            return(<PublicUser key={elemento.id_pueblic} {...elemento} id_users={usuarioId} name={userInfo.name}/>);
           })}
         </div>
       </>

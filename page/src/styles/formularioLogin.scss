@@ -1,6 +1,7 @@
+@import './caligrafia.scss';
 .login_titulo{
     width: 90%;
-    margin: auto;
+    margin:50px auto 0 auto;
     display: flex;
     justify-content: center;
 }
@@ -8,11 +9,12 @@
 
 .formulario_login{
     width: 500px;
-    margin:50px auto;
+    margin:20px auto;
     border: 2px solid gray;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 40px;
+    border-radius: 10px;
     .area_entrada{
         display: flex;
         flex-direction: column;
@@ -24,12 +26,46 @@
         input{
             padding: 5px;
             outline: none;
+            font-size: 1.3rem;
         }
     }
     .boton{
-        margin:20px 0 0 0; 
+        margin:10px auto 0 auto; 
         padding: 5px 0;
         font-size: 1.5rem;
         cursor: pointer;
+        width: fit-content;
+        padding: 5px 20px;
+
+    }
+}
+
+.dark-mode{
+    .login_titulo{
+        color: white;
+        font-size: 2rem;
+        font-family: $jost;
+        font-weight:800;
+    }
+    
+    
+    .formulario_login{
+        border: 5px solid #244192;
+        background: rgb(4, 4, 15);
+        .area_entrada{
+            label{
+                color: white;
+                font-family: $nunito;
+                font-weight: 800;
+            }
+            input{
+                background: rgb(6, 28, 90);
+                border: none;
+                color: rgb(235, 250, 255);
+                &::placeholder{
+                    color: rgb(52, 94, 211);
+                  }
+            }
+        }
     }
 }

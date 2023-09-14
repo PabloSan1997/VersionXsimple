@@ -37,6 +37,7 @@ export function LogginFormulario(): JSX.Element {
                     id='entrada1' 
                     value={entradas.email}
                     onChange={setEmail}
+                    placeholder='Escribir...'
                     />
             </div>
             <div className="area_entrada">
@@ -47,6 +48,7 @@ export function LogginFormulario(): JSX.Element {
                     id='entrada2' 
                     value={entradas.password}
                     onChange={setPassword}
+                    placeholder='Escribir...'
                     />
             </div>
             <button type="submit" className="boton">Iniciar</button>

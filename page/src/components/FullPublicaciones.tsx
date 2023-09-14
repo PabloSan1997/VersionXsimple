@@ -25,7 +25,6 @@ function FullPublic(props: FullPublic) {
     const mostra = cambiarFecha(fecha_actual);
     const navegar = useNavigate();
     const { userId } = UseContexto();
-
     const ir = () => {
         navegar(`${rutas.perfil}/${users.id_user}`);
     }
@@ -33,6 +32,9 @@ function FullPublic(props: FullPublic) {
     const cambiar = () => {
         setMostrarMenu(!mostrarMenu);
     }
+
+
+
     return (
         <div className="public">
             <div className="area_cabeza">
