@@ -125,7 +125,7 @@ export class PublicController {
 				throw 'No tienes permiso para esta acción';
 			}
 			await repositorio.delete({ id_pueblic });
-			res.status(204).json({ message: 'Publicacion borrada con exito' });
+			res.status(200).json({ message: 'Publicacion borrada con exito' });
 		} catch (error) {
 			const message = error as string;
 			next(Boom.badData(message));
